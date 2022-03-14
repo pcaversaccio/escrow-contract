@@ -38,7 +38,7 @@ contract CobieEscrow is AccessControl {
     );
 
     event Release(uint256 indexed registration);
-    
+
     event WinnerRefund(uint256 indexed winnerRefundRegistration);
 
     /**
@@ -80,7 +80,12 @@ contract CobieEscrow is AccessControl {
             escrowCount++;
         }
         uint256 registration = escrowCount;
-        escrows[registration] = Escrow(payable(msg.sender), payable(receiver), token, value);
+        escrows[registration] = Escrow(
+            payable(msg.sender),
+            payable(receiver),
+            token,
+            value
+        );
 
         emit Deposit(msg.sender, receiver, token, value, registration, details);
     }
@@ -100,7 +105,10 @@ contract CobieEscrow is AccessControl {
 
         for (uint256 i; i < length; ) {
             Escrow storage escrow = escrows[registration[i]];
-            require(escrow.receiver == escrowRevert.depositor, "RECEIVER_ADDRESS_NOT_EQUAL_TO_WINNER_DEPOSIT_ADDRESS");
+            require(
+                escrow.receiver == escrowRevert.depositor,
+                "RECEIVER_ADDRESS_NOT_EQUAL_TO_WINNER_DEPOSIT_ADDRESS"
+            );
             if (address(escrow.token) == address(0)) {
                 (bool success, ) = escrow.receiver.call{value: escrow.value}(
                     ""
@@ -121,10 +129,15 @@ contract CobieEscrow is AccessControl {
         }
 
         if (address(escrowRevert.token) == address(0)) {
-            (bool success, ) = escrowRevert.depositor.call{value: escrowRevert.value}("");
+            (bool success, ) = escrowRevert.depositor.call{
+                value: escrowRevert.value
+            }("");
             require(success, "ETH_REFUND_FAILED");
         } else {
-            escrowRevert.token.safeTransfer(escrowRevert.depositor, escrowRevert.value);
+            escrowRevert.token.safeTransfer(
+                escrowRevert.depositor,
+                escrowRevert.value
+            );
         }
         emit WinnerRefund(winnerRefundRegistration);
     }

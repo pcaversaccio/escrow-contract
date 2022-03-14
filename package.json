@@ -1,24 +1,23 @@
 {
-  "name": "hardhat-project-template-ts",
+  "name": "escrow-contract",
   "version": "1.0.0",
-  "description": "A fully-fledged Hardhat project template based on TypeScript.",
+  "description": "A simple multilateral escrow smart contract for ETH and ERC-20 tokens.",
   "keywords": [
-    "template",
-    "typescript",
-    "ethereum",
-    "smart-contracts",
     "solidity",
+    "erc20",
+    "escrow",
+    "smart-contract",
     "hardhat"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pcaversaccio/hardhat-project-template-ts"
+    "url": "https://github.com/pcaversaccio/escrow-contract"
   },
   "bug": {
-    "url": "https://github.com/pcaversaccio/hardhat-project-template-ts/issues"
+    "url": "https://github.com/pcaversaccio/escrow-contract/issues"
   },
-  "author": "Pascal Marco Caversaccio <pascal.caversaccio@hotmail.ch>",
-  "license": "MIT",
+  "author": "Мать Путина",
+  "license": "WTFPL",
   "scripts": {
     "help": "npx hardhat help",
     "accounts": "npx hardhat accounts",

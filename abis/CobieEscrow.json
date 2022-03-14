@@ -5,6 +5,7 @@
   "event RoleAdminChanged(bytes32 indexed,bytes32 indexed,bytes32 indexed)",
   "event RoleGranted(bytes32 indexed,address indexed,address indexed)",
   "event RoleRevoked(bytes32 indexed,address indexed,address indexed)",
+  "event WinnerRefund(uint256 indexed)",
   "function COBIE() view returns (bytes32)",
   "function DEFAULT_ADMIN_ROLE() view returns (bytes32)",
   "function deposit(address,address,uint256,string) payable",

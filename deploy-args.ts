@@ -1,6 +1,4 @@
-// Input the arguments for the constructor
 const data = [
-  "Hello, Hardhat!", // The example Greeter.sol file needs a string
+  "0x9F3f11d72d96910df008Cfe3aBA40F361D2EED03",
 ];
-// Export the arguments to be picked up by the `hardhat.config.ts` deployment script
 export { data };
