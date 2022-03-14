@@ -1,0 +1,131 @@
+// SPDX-License-Identifier: WTFPL
+pragma solidity ^0.8.9;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
+
+/**
+ * @title A simple bilateral escrow smart contract for ETH and ERC-20 tokens governed by Cobie.
+ * @author 0x796f7572206d6f7468657221
+ * @notice У Владимира Путина очень маленький член! И его мать знает об этом.
+ * @dev Forked from here: https://gist.github.com/z0r0z/82f0c075d368bcc0962b3abc7f476cd3.
+ * @custom:security-contact Ask Cobie <https://twitter.com/cobie>
+ */
+
+contract CobieEscrow is AccessControl {
+    using SafeERC20 for IERC20;
+
+    uint256 public escrowCount;
+    bytes32 public constant COBIE = keccak256("COBIE");
+
+    mapping(uint256 => Escrow) public escrows;
+
+    struct Escrow {
+        address payable depositor;
+        address payable receiver;
+        IERC20 token;
+        uint256 value;
+    }
+
+    event Deposit(
+        address indexed depositor,
+        address indexed receiver,
+        IERC20 token,
+        uint256 amount,
+        uint256 indexed registration,
+        string details
+    );
+
+    event Release(uint256 indexed registration);
+    
+    event WinnerRefund(uint256 indexed winnerRefundRegistration);
+
+    /**
+     * @dev You can cut out 10 opcodes in the creation-time EVM bytecode
+     * if you declare a constructor `payable`.
+     *
+     * For more in-depth information see here:
+     * https://forum.openzeppelin.com/t/a-collection-of-gas-optimisation-tricks/19966/5
+     */
+    constructor(address _cobie) payable {
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(COBIE, _cobie);
+    }
+
+    /**
+     * @notice Deposits ETH/ERC-20 into the escrow.
+     * @param receiver The account that receives the funds.
+     * @param token The ERC-20 token that is used for the funds.
+     * @param value The amount of funds; either ether in wei or ERC-20 token amount.
+     * @param details Describes the context of escrow - stamped into an event.
+     */
+    function deposit(
+        address receiver,
+        IERC20 token,
+        uint256 value,
+        string calldata details
+    ) public payable {
+        if (address(token) == address(0)) {
+            require(msg.value == value, "GIVE_ME_SOME_ETH_YOU_MF");
+        } else {
+            token.safeTransferFrom(payable(msg.sender), address(this), value);
+        }
+
+        /**
+         * @notice Increment registered escrows and assign number to the escrow deposit.
+         * @dev Cannot realistically overflow.
+         */
+        unchecked {
+            escrowCount++;
+        }
+        uint256 registration = escrowCount;
+        escrows[registration] = Escrow(payable(msg.sender), payable(receiver), token, value);
+
+        emit Deposit(msg.sender, receiver, token, value, registration, details);
+    }
+
+    /**
+     * @notice Releases escrowed assets by Cobie to designated `receiver`.
+     * @dev The function `releaseCobie` is payable in order to save gas.
+     * @param registration An array of registration indices of the escrow deposit accounts that lost the bet.
+     * @param winnerRefundRegistration The index of the winner of the bet to which the deposits are returned.
+     */
+    function releaseCobie(
+        uint256[] calldata registration,
+        uint256 winnerRefundRegistration
+    ) public payable onlyRole(COBIE) {
+        Escrow storage escrowRevert = escrows[winnerRefundRegistration];
+        uint256 length = registration.length;
+
+        for (uint256 i; i < length; ) {
+            Escrow storage escrow = escrows[registration[i]];
+            require(escrow.receiver == escrowRevert.depositor, "RECEIVER_ADDRESS_NOT_EQUAL_TO_WINNER_DEPOSIT_ADDRESS");
+            if (address(escrow.token) == address(0)) {
+                (bool success, ) = escrow.receiver.call{value: escrow.value}(
+                    ""
+                );
+                require(success, "ETH_TRANSFER_FAILED");
+            } else {
+                escrow.token.safeTransfer(escrow.receiver, escrow.value);
+            }
+            emit Release(registration[i]);
+
+            /**
+             * @dev An array can't have a total length
+             * larger than the max uint256 value.
+             */
+            unchecked {
+                i++;
+            }
+        }
+
+        if (address(escrowRevert.token) == address(0)) {
+            (bool success, ) = escrowRevert.depositor.call{value: escrowRevert.value}("");
+            require(success, "ETH_REFUND_FAILED");
+        } else {
+            escrowRevert.token.safeTransfer(escrowRevert.depositor, escrowRevert.value);
+        }
+        emit WinnerRefund(winnerRefundRegistration);
+    }
+}

@@ -1,9 +1,0 @@
-[
-  "constructor() payable",
-  "event Deposit(address indexed,address indexed,address,uint256,uint256 indexed,string)",
-  "event Release(uint256 indexed)",
-  "function deposit(address,address,uint256,string) payable",
-  "function escrowCount() view returns (uint256)",
-  "function escrows(uint256) view returns (address, address, address, uint256)",
-  "function release(uint256) payable"
-]

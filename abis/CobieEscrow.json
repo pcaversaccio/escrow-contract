@@ -1,0 +1,20 @@
+[
+  "constructor(address) payable",
+  "event Deposit(address indexed,address indexed,address,uint256,uint256 indexed,string)",
+  "event Release(uint256 indexed)",
+  "event RoleAdminChanged(bytes32 indexed,bytes32 indexed,bytes32 indexed)",
+  "event RoleGranted(bytes32 indexed,address indexed,address indexed)",
+  "event RoleRevoked(bytes32 indexed,address indexed,address indexed)",
+  "function COBIE() view returns (bytes32)",
+  "function DEFAULT_ADMIN_ROLE() view returns (bytes32)",
+  "function deposit(address,address,uint256,string) payable",
+  "function escrowCount() view returns (uint256)",
+  "function escrows(uint256) view returns (address, address, address, uint256)",
+  "function getRoleAdmin(bytes32) view returns (bytes32)",
+  "function grantRole(bytes32,address)",
+  "function hasRole(bytes32,address) view returns (bool)",
+  "function releaseCobie(uint256[],uint256) payable",
+  "function renounceRole(bytes32,address)",
+  "function revokeRole(bytes32,address)",
+  "function supportsInterface(bytes4) view returns (bool)"
+]
