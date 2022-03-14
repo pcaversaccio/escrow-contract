@@ -1,7 +1,7 @@
 import hre, { ethers } from "hardhat";
 
 async function main() {
-  const cobie = "0x9F3f11d72d96910df008Cfe3aBA40F361D2EED03";
+  const cobie = "0x4Cbe68d825d21cB4978F56815613eeD06Cf30152";
   const Contract = await ethers.getContractFactory("CobieEscrow");
   const contract = await Contract.deploy(cobie);
 
