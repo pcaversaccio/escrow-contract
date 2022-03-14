@@ -6,7 +6,8 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
- * @title A simple bilateral escrow smart contract for ETH and ERC-20 tokens governed by Cobie.
+ * @title A simple bilateral escrow smart contract for ETH and ERC-20
+ * tokens governed by Cobie.
  * @author 0x796f7572206d6f7468657221
  * @notice У Владимира Путина очень маленький член! И его мать знает об этом.
  * @dev Forked from here: https://gist.github.com/z0r0z/82f0c075d368bcc0962b3abc7f476cd3.
@@ -57,8 +58,10 @@ contract CobieEscrow is AccessControl {
      * @notice Deposits ETH/ERC-20 into the escrow.
      * @param receiver The account that receives the funds.
      * @param token The ERC-20 token that is used for the funds.
-     * @param value The amount of funds; either ether in wei or ERC-20 token amount.
-     * @param details Describes the context of escrow - stamped into an event.
+     * @param value The amount of funds; either ether in wei or
+     * ERC-20 token amount.
+     * @param details Describes the context of escrow - stamped
+     * into an event.
      */
     function deposit(
         address receiver,
@@ -67,13 +70,16 @@ contract CobieEscrow is AccessControl {
         string calldata details
     ) public payable {
         if (address(token) == address(0)) {
+            /// @dev Deposits ether value into the smart contract.
             require(msg.value == value, "GIVE_ME_SOME_ETH_YOU_MF");
         } else {
+            /// @dev Safely deposits an ERC-20 token into the smart contract.
             token.safeTransferFrom(payable(msg.sender), address(this), value);
         }
 
         /**
-         * @notice Increment registered escrows and assign number to the escrow deposit.
+         * @notice Increments registered escrows and assigns a number
+         * to the escrow deposit.
          * @dev Cannot realistically overflow.
          */
         unchecked {
@@ -93,8 +99,10 @@ contract CobieEscrow is AccessControl {
     /**
      * @notice Releases escrowed assets by Cobie to designated `receiver`.
      * @dev The function `releaseCobie` is payable in order to save gas.
-     * @param registration An array of registration indices of the escrow deposit accounts that lost the bet.
-     * @param winnerRefundRegistration The index of the winner of the bet to which the deposits are returned.
+     * @param registration An array of registration indices of the escrow
+     * deposit accounts that lost the bet.
+     * @param winnerRefundRegistration The registration index of the winner
+     * of the bet to which the deposits are returned.
      */
     function releaseCobie(
         uint256[] calldata registration,
@@ -103,20 +111,32 @@ contract CobieEscrow is AccessControl {
         Escrow storage escrowRevert = escrows[winnerRefundRegistration];
         uint256 length = registration.length;
 
+        /**
+         * @dev Loops over the array of registration indices of
+         * the escrow deposit accounts that lost the bet.
+         */
         for (uint256 i; i < length; ) {
             Escrow storage escrow = escrows[registration[i]];
+            /**
+             * @dev Requires that the receiver address is equal
+             * to the deposit address of the winner.
+             */
             require(
                 escrow.receiver == escrowRevert.depositor,
                 "RECEIVER_ADDRESS_NOT_EQUAL_TO_WINNER_DEPOSIT_ADDRESS"
             );
+
             if (address(escrow.token) == address(0)) {
+                /// @dev Distributes the ether value to the winner address.
                 (bool success, ) = escrow.receiver.call{value: escrow.value}(
                     ""
                 );
                 require(success, "ETH_TRANSFER_FAILED");
             } else {
+                /// @dev Safely distributes the ERC-20 token to the winner address.
                 escrow.token.safeTransfer(escrow.receiver, escrow.value);
             }
+
             emit Release(registration[i]);
 
             /**
@@ -128,17 +148,21 @@ contract CobieEscrow is AccessControl {
             }
         }
 
+        /// @dev Refunds the original winner stake.
         if (address(escrowRevert.token) == address(0)) {
+            /// @dev Refunds the ether value to the winner address.
             (bool success, ) = escrowRevert.depositor.call{
                 value: escrowRevert.value
             }("");
             require(success, "ETH_REFUND_FAILED");
         } else {
+            /// @dev Safely refunds the ERC-20 token to the winner address.
             escrowRevert.token.safeTransfer(
                 escrowRevert.depositor,
                 escrowRevert.value
             );
         }
+
         emit WinnerRefund(winnerRefundRegistration);
     }
 }
