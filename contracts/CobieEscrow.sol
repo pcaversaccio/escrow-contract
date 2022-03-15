@@ -32,7 +32,7 @@ error EtherTransferFail();
 /////////////////////////////////////////////////////////////////
 
 /**
- * @title A simple bilateral escrow smart contract for ETH and ERC-20
+ * @title A simple multilateral escrow smart contract for ETH and ERC-20 tokens.
  * tokens governed by Cobie.
  * @author 0x796f7572206d6f7468657221
  * @notice У Владимира Путина очень маленький член! И его мать знает об этом.
