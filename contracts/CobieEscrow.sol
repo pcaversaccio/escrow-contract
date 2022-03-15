@@ -1,9 +1,35 @@
 // SPDX-License-Identifier: WTFPL
-pragma solidity 0.8.9;
+pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
+
+/////////////////////////////////////////////////////////////////
+//////////                CUSTOM ERRORS                //////////
+/////////////////////////////////////////////////////////////////
+
+/**
+ * @dev Error that occurs when the `msg.value` is not equal to
+ * `value` when an ether value is deposited into the smart contract.
+ */
+error ValueMismatch();
+
+/**
+ * @dev Error that occurs when the receiver address is not equal
+ * to the deposit address of the winner.
+ * @param receiverAddress The defined receiver address by the
+ * loser address.
+ * @param winnerAddress The address that won the bet.
+ */
+error AddressMismatch(address receiverAddress, address winnerAddress);
+
+/// @dev Error that occurs when sending ether has failed.
+error EtherTransferFail();
+
+/////////////////////////////////////////////////////////////////
+//////////               ESCROW CONTRACT               //////////
+/////////////////////////////////////////////////////////////////
 
 /**
  * @title A simple bilateral escrow smart contract for ETH and ERC-20
@@ -29,6 +55,17 @@ contract CobieEscrow is AccessControl {
         uint256 value;
     }
 
+    /**
+     * @dev Event that is emitted when a deposit is successful.
+     * @param depositor The account that sends the funds.
+     * @param receiver The account that receives the funds.
+     * @param token The ERC-20 token that is used for the funds.
+     * @param amount The amount of funds; either ether in wei or
+     * ERC-20 token amount.
+     * @param registration Registration index of the escrow
+     * deposit account.
+     * @param details The description of the escrow context.
+     */
     event Deposit(
         address indexed depositor,
         address indexed receiver,
@@ -38,8 +75,20 @@ contract CobieEscrow is AccessControl {
         string details
     );
 
+    /**
+     * @dev Event that is emitted when a deposit is successfully
+     * released to the winner address.
+     * @param registration The registration index of the escrow
+     * deposit account that lost the bet.
+     */
     event Release(uint256 indexed registration);
 
+    /**
+     * @dev Event that is emitted when the winner's stake is
+     * successfully refunded.
+     * @param winnerRefundRegistration The registration index of
+     * the winner of the bet to which the deposits are returned.
+     */
     event WinnerRefund(uint256 indexed winnerRefundRegistration);
 
     /**
@@ -71,7 +120,7 @@ contract CobieEscrow is AccessControl {
     ) public payable {
         if (address(token) == address(0)) {
             /// @dev Deposits ether value into the smart contract.
-            require(msg.value == value, "GIVE_ME_SOME_ETH_YOU_MF");
+            if (msg.value != value) revert ValueMismatch();
         } else {
             /// @dev Safely deposits an ERC-20 token into the smart contract.
             token.safeTransferFrom(payable(msg.sender), address(this), value);
@@ -121,17 +170,16 @@ contract CobieEscrow is AccessControl {
              * @dev Requires that the receiver address is equal
              * to the deposit address of the winner.
              */
-            require(
-                escrow.receiver == escrowRevert.depositor,
-                "RECEIVER_ADDRESS_NOT_EQUAL_TO_WINNER_DEPOSIT_ADDRESS"
-            );
+            if (escrow.receiver != escrowRevert.depositor)
+                revert AddressMismatch(escrow.receiver, escrowRevert.depositor);
 
             if (address(escrow.token) == address(0)) {
                 /// @dev Distributes the ether value to the winner address.
+                // solhint-disable-next-line avoid-low-level-calls
                 (bool success, ) = escrow.receiver.call{value: escrow.value}(
                     ""
                 );
-                require(success, "ETH_TRANSFER_FAILED");
+                if (!success) revert EtherTransferFail();
             } else {
                 /// @dev Safely distributes the ERC-20 token to the winner address.
                 escrow.token.safeTransfer(escrow.receiver, escrow.value);
@@ -151,10 +199,11 @@ contract CobieEscrow is AccessControl {
         /// @dev Refunds the original winner stake.
         if (address(escrowRevert.token) == address(0)) {
             /// @dev Refunds the ether value to the winner address.
+            // solhint-disable-next-line avoid-low-level-calls
             (bool success, ) = escrowRevert.depositor.call{
                 value: escrowRevert.value
             }("");
-            require(success, "ETH_REFUND_FAILED");
+            if (!success) revert EtherTransferFail();
         } else {
             /// @dev Safely refunds the ERC-20 token to the winner address.
             escrowRevert.token.safeTransfer(
