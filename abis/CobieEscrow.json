@@ -1,5 +1,8 @@
 [
   "constructor(address) payable",
+  "error AddressMismatch(address,address)",
+  "error EtherTransferFail()",
+  "error ValueMismatch()",
   "event Deposit(address indexed,address indexed,address,uint256,uint256 indexed,string)",
   "event Release(uint256 indexed)",
   "event RoleAdminChanged(bytes32 indexed,bytes32 indexed,bytes32 indexed)",

@@ -228,12 +228,14 @@ const config: HardhatUserConfig = {
     constructorArgsPath: "./deploy-args.ts",
     salt: process.env.SALT,
     signer: process.env.PRIVATE_KEY,
-    networks: ["rinkeby", "ropsten"],
+    networks: ["rinkeby", "ropsten", "kovan", "goerli"],
     rpcUrls: [
       process.env.ETH_RINKEBY_TESTNET_URL,
       process.env.ETH_ROPSTEN_TESTNET_URL,
+      process.env.ETH_KOVAN_TESTNET_URL,
+      process.env.ETH_GOERLI_TESTNET_URL,
     ],
-    gasLimit: 1.2 * 10 ** 6,
+    gasLimit: 1.6 * 10 ** 6,
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

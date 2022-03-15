@@ -7,7 +7,11 @@
 
 > Cobie's address: [`0x4Cbe68d825d21cB4978F56815613eeD06Cf30152`](https://etherscan.io/address/0x4Cbe68d825d21cB4978F56815613eeD06Cf30152)
 
-- **Rinkeby:** [`0xf5d4a9a05767f22d0a004e6af677337227c8bee8`](https://rinkeby.etherscan.io/address/0xF5D4A9A05767f22D0A004E6Af677337227c8beE8)
-- **Ropsten:** [`TBD`]()
-- **Kovan:** [`TBD`]()
-- **Goerli:** [`TBD`]()
+- **Rinkeby:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://rinkeby.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
+- **Ropsten:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://ropsten.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
+- **Kovan:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://kovan.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
+- **Goerli:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://goerli.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
+
+## Disclaimer
+
+![ive-got-a-disclaimer-about-this-long](https://user-images.githubusercontent.com/25297591/154054324-6639d92d-0133-416c-b929-374ba7bb9218.jpg)
