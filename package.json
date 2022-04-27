@@ -11,9 +11,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pcaversaccio/escrow-contract"
+    "url": "git+https://github.com/pcaversaccio/escrow-contract.git"
   },
-  "bug": {
+  "homepage": "https://github.com/pcaversaccio/escrow-contract#readme",
+  "bugs": {
     "url": "https://github.com/pcaversaccio/escrow-contract/issues"
   },
   "author": "Мать Путина",
@@ -64,8 +65,8 @@
     "deploy:autobahn": "npx hardhat run --network autobahn scripts/deploy.ts",
     "deploy:spark": "npx hardhat run --network spark scripts/deploy.ts",
     "deploy:fuse": "npx hardhat run --network fuse scripts/deploy.ts",
-    "prettier:check": "prettier -c **/*.{js,ts,md,sol}",
-    "prettier:fix": "prettier --write **/*.{js,ts,md,sol}",
+    "prettier:check": "prettier -c **/*.{js,ts,md,sol,json,yml}",
+    "prettier:fix": "prettier -w **/*.{js,ts,md,sol,json,yml}",
     "solhint:check": "npx solhint 'contracts/**/*.sol'",
     "solhint:fix": "npx solhint 'contracts/**/*.sol' --fix",
     "lint:check": "yarn prettier:check && yarn solhint:check && npx eslint **/*.{js,ts}",
