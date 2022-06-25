@@ -9,10 +9,10 @@ async function main() {
 
   console.log("CobieEscrow deployed to:", contract.address);
 
-  await hre.tenderly.verify({
-    name: "CobieEscrow",
-    address: contract.address,
-  });
+  // await hre.tenderly.verify({
+  //   name: "CobieEscrow",
+  //   address: contract.address,
+  // });
 }
 
 main().catch((error) => {

@@ -12,3 +12,6 @@ artifacts
 
 # xdeployer files
 deployments
+
+# Tenderly fork deployment directory
+deployments_tenderly
