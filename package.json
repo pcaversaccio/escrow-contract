@@ -71,6 +71,10 @@
     "deploy:fuse": "npx hardhat run --network fuse scripts/deploy.ts",
     "deploy:cronostestnet": "npx hardhat run --network cronosTestnet scripts/deploy.ts",
     "deploy:cronosmain": "npx hardhat run --network cronosMain scripts/deploy.ts",
+    "deploy:evmostestnet": "npx hardhat run --network evmosTestnet scripts/deploy.ts",
+    "deploy:evmosmain": "npx hardhat run --network evmosMain scripts/deploy.ts",
+    "deploy:bobatestnet": "npx hardhat run --network bobaTestnet scripts/deploy.ts",
+    "deploy:bobamain": "npx hardhat run --network bobaMain scripts/deploy.ts",
     "prettier:check": "prettier -c **/*.{js,ts,md,sol,json,yml}",
     "prettier:fix": "prettier -w **/*.{js,ts,md,sol,json,yml}",
     "solhint:check": "npx solhint 'contracts/**/*.sol'",
@@ -110,6 +114,6 @@
     "ts-node": "^10.9.1",
     "typechain": "^8.1.0",
     "typescript": "^4.7.4",
-    "xdeployer": "^1.1.15"
+    "xdeployer": "^1.1.16"
   }
 }
