@@ -78,6 +78,8 @@
     "deploy:evmosmain": "npx hardhat run --network evmosMain scripts/deploy.ts",
     "deploy:bobatestnet": "npx hardhat run --network bobaTestnet scripts/deploy.ts",
     "deploy:bobamain": "npx hardhat run --network bobaMain scripts/deploy.ts",
+    "deploy:cantotestnet": "npx hardhat run --network cantoTestnet scripts/deploy.ts",
+    "deploy:cantomain": "npx hardhat run --network cantoMain scripts/deploy.ts",
     "prettier:check": "prettier -c **/*.{js,ts,md,sol,json,yml}",
     "prettier:fix": "prettier -w **/*.{js,ts,md,sol,json,yml}",
     "solhint:check": "npx solhint 'contracts/**/*.sol'",
@@ -94,7 +96,7 @@
     "@nomiclabs/hardhat-ethers": "^2.2.1",
     "@nomiclabs/hardhat-etherscan": "^3.1.3",
     "@openzeppelin/contracts": "^4.8.0",
-    "@tenderly/hardhat-tenderly": "^1.3.3",
+    "@tenderly/hardhat-tenderly": "^1.4.1",
     "@typechain/ethers-v5": "^10.2.0",
     "@typechain/hardhat": "^6.1.5",
     "@types/chai": "^4.3.4",
@@ -117,6 +119,6 @@
     "ts-node": "^10.9.1",
     "typechain": "^8.1.1",
     "typescript": "^4.9.4",
-    "xdeployer": "^1.1.25"
+    "xdeployer": "^1.1.26"
   }
 }
