@@ -6,6 +6,9 @@ import "@nomicfoundation/hardhat-chai-matchers";
 import "@nomiclabs/hardhat-etherscan";
 import "@typechain/hardhat";
 import "@truffle/dashboard-hardhat-plugin";
+import "@matterlabs/hardhat-zksync-solc";
+import "@matterlabs/hardhat-zksync-deploy";
+import "@matterlabs/hardhat-zksync-verify";
 import "xdeployer";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
@@ -52,6 +55,14 @@ const config: HardhatUserConfig = {
       },
     },
   },
+  zksolc: {
+    version: "1.3.7",
+    compilerSource: "binary",
+    settings: {
+      isSystem: false,
+      forceEvmla: false,
+    },
+  },
   networks: {
     hardhat: {
       initialBaseFeePerGas: 0,
@@ -66,6 +77,7 @@ const config: HardhatUserConfig = {
         // If you want to do some forking, set `enabled` to true
         enabled: false,
       },
+      // zksync: true, // Enables zkSync in the Hardhat local network
     },
     localhost: {
       url: "http://127.0.0.1:8545",
@@ -365,6 +377,38 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    zkSyncTestnet: {
+      chainId: 280,
+      url: process.env.ZKSYNC_TESTNET_URL || "",
+      ethNetwork: "goerli",
+      zksync: true,
+      verifyURL:
+        "https://zksync2-testnet-explorer.zksync.dev/contract_verification",
+    },
+    mantleTestnet: {
+      chainId: 5001,
+      url: process.env.MANTLE_TESTNET_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    filecoinTestnet: {
+      chainId: 3141,
+      url: process.env.FILECOIN_TESTNET_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    scrollTestnet: {
+      chainId: 534353,
+      url: process.env.SCROLL_TESTNET_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    lineaTestnet: {
+      chainId: 59140,
+      url: process.env.LINEA_TESTNET_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -469,6 +513,12 @@ const config: HardhatUserConfig = {
       cantoTestnet: process.env.CANTO_API_KEY || "",
       // For Base testnet
       baseTestnet: process.env.BASE_API_KEY || "",
+      // For Mantle testnet
+      mantleTestnet: process.env.MANTLE_API_KEY || "",
+      // For Scroll testnet
+      scrollTestnet: process.env.SCROLL_API_KEY || "",
+      // For Linea testnet
+      lineaTestnet: process.env.LINEA_API_KEY || "",
     },
     customChains: [
       {
@@ -592,6 +642,22 @@ const config: HardhatUserConfig = {
         },
       },
       {
+        network: "mantleTestnet",
+        chainId: 5001,
+        urls: {
+          apiURL: "https://explorer.testnet.mantle.xyz/api",
+          browserURL: "https://explorer.testnet.mantle.xyz",
+        },
+      },
+      {
+        network: "scrollTestnet",
+        chainId: 534353,
+        urls: {
+          apiURL: "https://blockscout.scroll.io/api",
+          browserURL: "https://blockscout.scroll.io",
+        },
+      },
+      {
         network: "polygonZkEVM",
         chainId: 1101,
         urls: {
@@ -605,6 +671,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-testnet-zkevm.polygonscan.com/api",
           browserURL: "https://testnet-zkevm.polygonscan.com",
+        },
+      },
+      {
+        network: "lineaTestnet",
+        chainId: 59140,
+        urls: {
+          apiURL: "https://explorer.goerli.linea.build/api",
+          browserURL: "https://explorer.goerli.linea.build",
         },
       },
     ],

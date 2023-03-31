@@ -1,6 +1,9 @@
 node_modules
-artifacts
 cache
-coverage
-typechain
+cache-zk
+artifacts
+artifacts-zk
 typechain-types
+coverage
+deployments
+deployments_tenderly

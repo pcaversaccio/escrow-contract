@@ -1,9 +1,9 @@
 node_modules
 cache
+cache-zk
 artifacts
+artifacts-zk
 typechain-types
 coverage
 deployments
 deployments_tenderly
-bin
-out

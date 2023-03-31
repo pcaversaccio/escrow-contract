@@ -61,6 +61,10 @@ deployments
 # Tenderly fork deployment directory
 deployments_tenderly
 
+# zkSync files
+cache-zk
+artifacts-zk
+
 # Miscellaneous files
 bin
 out
