@@ -56,7 +56,7 @@ const config: HardhatUserConfig = {
     },
   },
   zksolc: {
-    version: "1.3.7",
+    version: "1.3.8",
     compilerSource: "binary",
     settings: {
       isSystem: false,
@@ -67,7 +67,7 @@ const config: HardhatUserConfig = {
     hardhat: {
       initialBaseFeePerGas: 0,
       chainId: 31337,
-      hardfork: "merge",
+      hardfork: "shanghai",
       forking: {
         url: process.env.ETH_MAINNET_URL || "",
         // The Hardhat network will by default fork from the latest mainnet block
