@@ -63,6 +63,14 @@ const config: HardhatUserConfig = {
       forceEvmla: false,
     },
   },
+  truffle: {
+    dashboardNetworkName: "truffleDashboard", // Truffle's default value is "truffleDashboard"
+    dashboardNetworkConfig: {
+      // Truffle's default value is 0 (i.e. no timeout), while Hardhat's default
+      // value is 40000 (40 seconds)
+      timeout: 0,
+    },
+  },
   networks: {
     hardhat: {
       initialBaseFeePerGas: 0,
@@ -81,10 +89,6 @@ const config: HardhatUserConfig = {
     },
     localhost: {
       url: "http://127.0.0.1:8545",
-    },
-    "truffle-dashboard": {
-      url: "http://localhost:24012/rpc",
-      timeout: 0,
     },
     tenderly: {
       url: `https://rpc.tenderly.co/fork/${process.env.TENDERLY_FORK_ID}`,
@@ -429,12 +433,10 @@ const config: HardhatUserConfig = {
     constructorArgsPath: "./deploy-args.ts",
     salt: process.env.SALT,
     signer: process.env.PRIVATE_KEY,
-    networks: ["rinkeby", "ropsten", "kovan", "goerli"],
+    networks: ["goerli", "sepolia"],
     rpcUrls: [
-      process.env.ETH_RINKEBY_TESTNET_URL,
-      process.env.ETH_ROPSTEN_TESTNET_URL,
-      process.env.ETH_KOVAN_TESTNET_URL,
       process.env.ETH_GOERLI_TESTNET_URL,
+      process.env.ETH_SEPOLIA_TESTNET_URL,
     ],
     gasLimit: 1.6 * 10 ** 6,
   },

@@ -7,10 +7,8 @@
 
 > Cobie's address: [`0x4Cbe68d825d21cB4978F56815613eeD06Cf30152`](https://etherscan.io/address/0x4Cbe68d825d21cB4978F56815613eeD06Cf30152)
 
-- **Rinkeby:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://rinkeby.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
-- **Ropsten:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://ropsten.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
-- **Kovan:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://kovan.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
-- **Goerli:** [`0xFfE4206026bead77d783d7c751924e87cFFE7072`](https://goerli.etherscan.io/address/0xFfE4206026bead77d783d7c751924e87cFFE7072)
+- **Goerli:** [`0x854B1C46d538A69889A6658C079B41556229b255`](https://goerli.etherscan.io/address/0x854B1C46d538A69889A6658C079B41556229b255)
+- **Sepolia:** [`0x854B1C46d538A69889A6658C079B41556229b255`](https://sepolia.etherscan.io/address/0x854B1C46d538A69889A6658C079B41556229b255)
 
 ## Disclaimer
 
