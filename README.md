@@ -1,7 +1,7 @@
 # Multilateral Escrow Smart Contract Governed by Cobie
 
 [![Test smart contracts](https://github.com/pcaversaccio/escrow-contract/actions/workflows/test-contracts.yml/badge.svg)](https://github.com/pcaversaccio/escrow-contract/actions/workflows/test-contracts.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit/)
 
 ## Test Deployments
 
