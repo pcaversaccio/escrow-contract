@@ -164,7 +164,7 @@ contract CobieEscrow is AccessControl {
          * @dev Loops over the array of registration indices of
          * the escrow deposit accounts that lost the bet.
          */
-        for (uint256 i; i < length; ) {
+        for (uint256 i; i < length; ++i) {
             Escrow storage escrow = escrows[registration[i]];
             /**
              * @dev Requires that the receiver address is equal
@@ -186,14 +186,6 @@ contract CobieEscrow is AccessControl {
             }
 
             emit Release(registration[i]);
-
-            /**
-             * @dev An array can't have a total length
-             * larger than the max uint256 value.
-             */
-            unchecked {
-                i++;
-            }
         }
 
         /// @dev Refunds the original winner stake.
