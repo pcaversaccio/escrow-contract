@@ -60,7 +60,7 @@ const config: HardhatUserConfig = {
     },
   },
   zksolc: {
-    version: "1.3.17",
+    version: "1.3.18",
     compilerSource: "binary",
     settings: {
       isSystem: false,
@@ -603,16 +603,12 @@ const config: HardhatUserConfig = {
           : [],
     },
     zkSyncTestnet: {
-      chainId: 280,
+      chainId: 300,
       url: process.env.ZKSYNC_TESTNET_URL || "",
-      ethNetwork: process.env.ETH_GOERLI_TESTNET_URL || "",
+      ethNetwork: process.env.ETH_SEPOLIA_TESTNET_URL || "",
       zksync: true,
       verifyURL:
-        "https://zksync2-testnet-explorer.zksync.dev/contract_verification",
-      ledgerAccounts:
-        process.env.LEDGER_ACCOUNT !== undefined
-          ? [process.env.LEDGER_ACCOUNT]
-          : [],
+        "https://explorer.sepolia.era.zksync.dev/contract_verification",
     },
     zkSyncMain: {
       chainId: 324,
@@ -621,10 +617,6 @@ const config: HardhatUserConfig = {
       zksync: true,
       verifyURL:
         "https://zksync2-mainnet-explorer.zksync.io/contract_verification",
-      ledgerAccounts:
-        process.env.LEDGER_ACCOUNT !== undefined
-          ? [process.env.LEDGER_ACCOUNT]
-          : [],
     },
     mantleTestnet: {
       chainId: 5001,
