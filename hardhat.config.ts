@@ -292,16 +292,6 @@ const config: HardhatUserConfig = {
           ? [process.env.LEDGER_ACCOUNT]
           : [],
     },
-    hecoTestnet: {
-      chainId: 256,
-      url: process.env.HECO_TESTNET_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      ledgerAccounts:
-        process.env.LEDGER_ACCOUNT !== undefined
-          ? [process.env.LEDGER_ACCOUNT]
-          : [],
-    },
     hecoMain: {
       chainId: 128,
       url: process.env.HECO_MAINNET_URL || "",
@@ -345,16 +335,6 @@ const config: HardhatUserConfig = {
     avalanche: {
       chainId: 43114,
       url: process.env.AVALANCHE_MAINNET_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      ledgerAccounts:
-        process.env.LEDGER_ACCOUNT !== undefined
-          ? [process.env.LEDGER_ACCOUNT]
-          : [],
-    },
-    sokol: {
-      chainId: 77,
-      url: process.env.SOKOL_TESTNET_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       ledgerAccounts:
@@ -822,9 +802,8 @@ const config: HardhatUserConfig = {
       // For BSC testnet & mainnet
       bsc: process.env.BSC_API_KEY || "",
       bscTestnet: process.env.BSC_API_KEY || "",
-      // For Heco testnet & mainnet
+      // For Heco mainnet
       heco: process.env.HECO_API_KEY || "",
-      hecoTestnet: process.env.HECO_API_KEY || "",
       // For Fantom testnet & mainnet
       opera: process.env.FANTOM_API_KEY || "",
       ftmTestnet: process.env.FANTOM_API_KEY || "",
@@ -858,10 +837,9 @@ const config: HardhatUserConfig = {
       // For Cronos testnet & mainnet
       cronos: process.env.CRONOS_API_KEY || "",
       cronosTestnet: process.env.CRONOS_API_KEY || "",
-      // For Gnosis/xDai testnets & mainnets
+      // For Gnosis/xDai testnet & mainnets
       gnosis: process.env.GNOSIS_API_KEY || "",
       xdai: process.env.GNOSIS_API_KEY || "",
-      sokol: process.env.GNOSIS_API_KEY || "",
       chiado: process.env.GNOSIS_API_KEY || "",
       // For Fuse testnet & mainnet
       fuse: process.env.FUSE_API_KEY || "",
