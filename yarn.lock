@@ -1048,10 +1048,10 @@
     table "^6.8.0"
     undici "^5.14.0"
 
-"@openzeppelin/contracts@^4.9.4":
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.9.4.tgz#9241960f6aa5b9f73eb59452d6d85b9e7f21f393"
-  integrity sha512-cZ47skkw2iUz7ApIkgin5bNff7GkCJCZev48HKp81+sRBE0So9yi+Nm5O9G2BMysbjSdA9o9dKDUx0J9Yy1LUQ==
+"@openzeppelin/contracts@^4.9.5":
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.9.5.tgz#1eed23d4844c861a1835b5d33507c1017fa98de8"
+  integrity sha512-ZK+W5mVhRppff9BE6YdR8CC52C8zAvsVAiWhEtQ5+oNxFE6h1WdeWo+FJSF8KKvtxxVYZ7MTP/5KoVpAU3aSWg==
 
 "@pnpm/config.env-replace@^1.1.0":
   version "1.1.0"
