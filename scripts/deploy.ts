@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import hre, { ethers } from "hardhat";
+import hre from "hardhat";
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -7,23 +7,23 @@ function delay(ms: number) {
 
 async function main() {
   const cobie = ["0x4Cbe68d825d21cB4978F56815613eeD06Cf30152"];
-  const contract = await ethers.deployContract("CobieEscrow", cobie);
+  const cobieEscrow = await hre.ethers.deployContract("CobieEscrow", cobie);
 
-  await contract.deployed();
-  const contractAddress = contract.address;
+  await cobieEscrow.waitForDeployment();
+  const cobieEscrowAddress = await cobieEscrow.getAddress();
 
-  console.log("CobieEscrow deployed to:", contractAddress);
+  console.log("CobieEscrow deployed to:", cobieEscrowAddress);
 
   await delay(30000); // Wait for 30 seconds before verifying the contract
 
   await hre.run("verify:verify", {
-    address: contractAddress,
+    address: cobieEscrowAddress,
     constructorArguments: cobie,
   });
 
   // await hre.tenderly.verify({
   //   name: "CobieEscrow",
-  //   address: contractAddress,
+  //   address: cobieEscrowAddress,
   // });
 }
 
