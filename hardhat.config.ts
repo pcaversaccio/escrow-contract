@@ -608,6 +608,12 @@ const config: HardhatUserConfig = {
     spacing: 2,
     pretty: true,
   },
+  sourcify: {
+    // Enable Sourcify verification by default
+    enabled: true,
+    apiUrl: "https://sourcify.dev/server",
+    browserUrl: "https://repo.sourcify.dev",
+  },
   etherscan: {
     // Add your own API key by getting an account at etherscan (https://etherscan.io), snowtrace (https://snowtrace.io) etc.
     // This is used for verification purposes when you want to `npx hardhat verify` your contract using Hardhat
