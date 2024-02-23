@@ -79,7 +79,7 @@ const config: HardhatUserConfig = {
     },
   },
   zksolc: {
-    version: "1.3.23",
+    version: "1.4.0",
     compilerSource: "binary",
     settings: {
       isSystem: false,
