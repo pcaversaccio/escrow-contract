@@ -3,7 +3,7 @@
 [![🕵️‍♂️ Test smart contracts](https://github.com/pcaversaccio/escrow-contract/actions/workflows/test-contracts.yml/badge.svg)](https://github.com/pcaversaccio/escrow-contract/actions/workflows/test-contracts.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit)
 
-## Test Deployments
+## Test Deployments TEST
 
 > Cobie's address: [`0x4Cbe68d825d21cB4978F56815613eeD06Cf30152`](https://etherscan.io/address/0x4Cbe68d825d21cB4978F56815613eeD06Cf30152)
 
