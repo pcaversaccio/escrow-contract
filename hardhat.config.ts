@@ -103,7 +103,7 @@ const config: HardhatUserConfig = {
     hardhat: {
       initialBaseFeePerGas: 0,
       chainId: 31337,
-      hardfork: "shanghai",
+      hardfork: "cancun",
       forking: {
         url: vars.get("ETH_MAINNET_URL", ethMainnetUrl),
         // The Hardhat network will by default fork from the latest mainnet block
@@ -225,10 +225,10 @@ const config: HardhatUserConfig = {
       ledgerAccounts,
     },
     polygonZkEVMTestnet: {
-      chainId: 1442,
+      chainId: 2442,
       url: vars.get(
         "POLYGON_ZKEVM_TESTNET_URL",
-        "https://rpc.public.zkevm-test.net",
+        "https://rpc.cardona.zkevm-rpc.com",
       ),
       accounts,
       ledgerAccounts,
@@ -601,6 +601,24 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    dosTestnet: {
+      chainId: 3939,
+      url: vars.get("DOS_TESTNET_URL", "https://test.doschain.com"),
+      accounts,
+      ledgerAccounts,
+    },
+    dosMain: {
+      chainId: 7979,
+      url: vars.get("DOS_MAINNET_URL", "https://main.doschain.com"),
+      accounts,
+      ledgerAccounts,
+    },
+    fraxtalTestnet: {
+      chainId: 2522,
+      url: vars.get("FRAXTAL_TESTNET_URL", "https://rpc.testnet.frax.com"),
+      accounts,
+      ledgerAccounts,
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -746,6 +764,11 @@ const config: HardhatUserConfig = {
       // For Kroma testnet & mainnet
       kroma: vars.get("KROMA_API_KEY", ""),
       kromaTestnet: vars.get("KROMA_API_KEY", ""),
+      // For DOS Chain testnet & mainnet
+      dos: vars.get("DOS_API_KEY", ""),
+      dosTestnet: vars.get("DOS_API_KEY", ""),
+      // For Fraxtal testnet
+      fraxtalTestnet: vars.get("FRAXTAL_API_KEY", ""),
     },
     customChains: [
       {
@@ -968,10 +991,10 @@ const config: HardhatUserConfig = {
       },
       {
         network: "polygonZkEVMTestnet",
-        chainId: 1442,
+        chainId: 2442,
         urls: {
-          apiURL: "https://api-testnet-zkevm.polygonscan.com/api",
-          browserURL: "https://testnet-zkevm.polygonscan.com",
+          apiURL: "https://api-cardona-zkevm.polygonscan.com/api",
+          browserURL: "https://cardona-zkevm.polygonscan.com",
         },
       },
       {
@@ -1084,6 +1107,30 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-sepolia.kromascan.com",
           browserURL: "https://sepolia.kromascan.com",
+        },
+      },
+      {
+        network: "dos",
+        chainId: 7979,
+        urls: {
+          apiURL: "https://doscan.io/api",
+          browserURL: "https://doscan.io",
+        },
+      },
+      {
+        network: "dosTestnet",
+        chainId: 3939,
+        urls: {
+          apiURL: "https://test.doscan.io/api",
+          browserURL: "https://test.doscan.io",
+        },
+      },
+      {
+        network: "fraxtalTestnet",
+        chainId: 2522,
+        urls: {
+          apiURL: "https://api-holesky.fraxscan.com/api",
+          browserURL: "https://holesky.fraxscan.com",
         },
       },
     ],
