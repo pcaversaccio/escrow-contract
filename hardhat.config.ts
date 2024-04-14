@@ -218,9 +218,12 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
-    mumbai: {
-      chainId: 80001,
-      url: vars.get("POLYGON_TESTNET_URL", "https://rpc-mumbai.maticvigil.com"),
+    amoy: {
+      chainId: 80002,
+      url: vars.get(
+        "POLYGON_TESTNET_URL",
+        "https://rpc-amoy.polygon.technology",
+      ),
       accounts,
       ledgerAccounts,
     },
@@ -458,8 +461,8 @@ const config: HardhatUserConfig = {
       ledgerAccounts,
     },
     mantleTestnet: {
-      chainId: 5001,
-      url: vars.get("MANTLE_TESTNET_URL", "https://rpc.testnet.mantle.xyz"),
+      chainId: 5003,
+      url: vars.get("MANTLE_TESTNET_URL", "https://rpc.sepolia.mantle.xyz"),
       accounts,
       ledgerAccounts,
     },
@@ -497,8 +500,8 @@ const config: HardhatUserConfig = {
       ledgerAccounts,
     },
     lineaTestnet: {
-      chainId: 59140,
-      url: vars.get("LINEA_TESTNET_URL", "https://rpc.goerli.linea.build"),
+      chainId: 59141,
+      url: vars.get("LINEA_TESTNET_URL", "https://rpc.sepolia.linea.build"),
       accounts,
       ledgerAccounts,
     },
@@ -646,6 +649,12 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    kavaMain: {
+      chainId: 2222,
+      url: vars.get("KAVA_MAINNET_URL", "https://evm.kava-rpc.com"),
+      accounts,
+      ledgerAccounts,
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -715,7 +724,7 @@ const config: HardhatUserConfig = {
       // For Polygon testnets & mainnets
       polygon: vars.get("POLYGON_API_KEY", ""),
       polygonZkEVM: vars.get("POLYGON_ZKEVM_API_KEY", ""),
-      polygonMumbai: vars.get("POLYGON_API_KEY", ""),
+      polygonAmoy: vars.get("POLYGON_AMOY_API_KEY", ""),
       polygonZkEVMTestnet: vars.get("POLYGON_ZKEVM_API_KEY", ""),
       // For Arbitrum testnet & mainnets
       arbitrumOne: vars.get("ARBITRUM_API_KEY", ""),
@@ -800,6 +809,8 @@ const config: HardhatUserConfig = {
       dosTestnet: vars.get("DOS_API_KEY", ""),
       // For Fraxtal testnet
       fraxtalTestnet: vars.get("FRAXTAL_API_KEY", ""),
+      // For Kava mainnet
+      kava: vars.get("KAVA_API_KEY", ""),
     },
     customChains: [
       {
@@ -974,10 +985,10 @@ const config: HardhatUserConfig = {
       },
       {
         network: "mantleTestnet",
-        chainId: 5001,
+        chainId: 5003,
         urls: {
-          apiURL: "https://explorer.testnet.mantle.xyz/api",
-          browserURL: "https://explorer.testnet.mantle.xyz",
+          apiURL: "https://explorer.sepolia.mantle.xyz/api",
+          browserURL: "https://explorer.sepolia.mantle.xyz",
         },
       },
       {
@@ -1021,6 +1032,15 @@ const config: HardhatUserConfig = {
         },
       },
       {
+        network: "polygonAmoy",
+        chainId: 80002,
+        urls: {
+          apiURL:
+            "https://www.oklink.com/api/explorer/v1/contract/verify/async/api/polygonAmoy",
+          browserURL: "https://www.oklink.com/amoy",
+        },
+      },
+      {
         network: "polygonZkEVMTestnet",
         chainId: 2442,
         urls: {
@@ -1038,10 +1058,10 @@ const config: HardhatUserConfig = {
       },
       {
         network: "lineaTestnet",
-        chainId: 59140,
+        chainId: 59141,
         urls: {
-          apiURL: "https://api-testnet.lineascan.build/api",
-          browserURL: "https://goerli.lineascan.build",
+          apiURL: "https://api-sepolia.lineascan.build/api",
+          browserURL: "https://sepolia.lineascan.build",
         },
       },
       {
@@ -1186,6 +1206,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-holesky.fraxscan.com/api",
           browserURL: "https://holesky.fraxscan.com",
+        },
+      },
+      {
+        network: "kava",
+        chainId: 2222,
+        urls: {
+          apiURL: "https://kavascan.com/api",
+          browserURL: "https://kavascan.com",
         },
       },
     ],
