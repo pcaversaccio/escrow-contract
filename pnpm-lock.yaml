@@ -8,8 +8,8 @@ importers:
   .:
     devDependencies:
       "@eslint/js":
-        specifier: ^9.1.1
-        version: 9.1.1
+        specifier: ^9.2.0
+        version: 9.2.0
       "@matterlabs/hardhat-zksync-deploy":
         specifier: ^1.3.0
         version: 1.3.0(ethers@6.12.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat@2.22.3(bufferutil@4.0.8)(ts-node@10.9.2(@types/node@20.12.8)(typescript@5.4.5))(typescript@5.4.5)(utf-8-validate@5.0.10))(zksync-ethers@6.7.0(ethers@6.12.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)))
@@ -53,8 +53,8 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0(@typechain/ethers-v6@0.5.1(ethers@6.12.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(typechain@8.3.2(typescript@5.4.5))(typescript@5.4.5))(ethers@6.12.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat@2.22.3(bufferutil@4.0.8)(ts-node@10.9.2(@types/node@20.12.8)(typescript@5.4.5))(typescript@5.4.5)(utf-8-validate@5.0.10))(typechain@8.3.2(typescript@5.4.5))
       "@types/chai":
-        specifier: ^4.3.15
-        version: 4.3.15
+        specifier: ^4.3.16
+        version: 4.3.16
       "@types/mocha":
         specifier: ^10.0.6
         version: 10.0.6
@@ -232,10 +232,10 @@ packages:
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
 
-  "@eslint/js@9.1.1":
+  "@eslint/js@9.2.0":
     resolution:
       {
-        integrity: sha512-5WoDz3Y19Bg2BnErkZTp0en+c/i9PvgFS7MBe1+m60HjFr0hrphlAGp4yzI7pxpt4xShln4ZyYp4neJm8hmOkQ==,
+        integrity: sha512-ESiIudvhoYni+MdsI8oD7skpprZ89qKocwRM2KEvhhBJ9nl5MRh7BXU5GTod7Mdygq+AUl+QzId6iWJKR/wABA==,
       }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
 
@@ -1408,10 +1408,10 @@ packages:
         integrity: sha512-ThlRVIJhr69FLlh6IctTXFkmhtP3NpMZ2QGq69StYLyKZFp/HOp1VdKZj7RvfNWYYcJ1xlbLGLLWj1UvP5u/Gw==,
       }
 
-  "@types/chai@4.3.15":
+  "@types/chai@4.3.16":
     resolution:
       {
-        integrity: sha512-PYVSvyeZqy9++MoSegq88PxoPndWDDLGbJmE/OZnzUk3D4cCRTmA4N6EX3g0GgLVA+vtys7bj4luhkVCglGTkQ==,
+        integrity: sha512-PatH4iOdyh3MyWtmHVFXLWCCIhUbopaltqddG9BzB+gMIzee2MJrvd+jouii9Z3wzQJruGWAm7WOMjgfG8hQlQ==,
       }
 
   "@types/glob@7.2.0":
@@ -2645,10 +2645,10 @@ packages:
       typescript:
         optional: true
 
-  cpu-features@0.0.9:
+  cpu-features@0.0.10:
     resolution:
       {
-        integrity: sha512-AKjgn2rP2yJyfbepsmLfiYcmtNn/2eUvocUyM/09yB0YDiz39HteK/5/T4Onf0pmdYDMgkBoGvRLvEguzyL7wQ==,
+        integrity: sha512-9IkYqtX3YHPCzoVg1Py+o9057a3i0fp7S530UWokCSaFVTc7CwXPRiOjRjBQQ18ZCNafx78YfnG+HALxtVmOGA==,
       }
     engines: { node: ">=10.0.0" }
 
@@ -5079,10 +5079,10 @@ packages:
         integrity: sha512-wxfUjg9WebH+CUDX/CdbRlh5SmfZiy/hpkxaRI16Y9W56Pa75sWgd/rvFilSgrauD9NyFymP/+JFV3KwzIsJeg==,
       }
 
-  minipass@7.0.4:
+  minipass@7.1.0:
     resolution:
       {
-        integrity: sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==,
+        integrity: sha512-oGZRv2OT1lO2UF1zUcwdTb3wqUwI0kBGTgt/T7OdSj6M6N5m3o5uPf0AIW6lVxGGoiWUR7e2AwTE+xiwK8WQig==,
       }
     engines: { node: ">=16 || 14 >=14.17" }
 
@@ -7728,7 +7728,7 @@ snapshots:
 
   "@eslint/js@8.57.0": {}
 
-  "@eslint/js@9.1.1": {}
+  "@eslint/js@9.2.0": {}
 
   "@ethereumjs/common@2.5.0":
     dependencies:
@@ -8853,9 +8853,9 @@ snapshots:
 
   "@types/chai-as-promised@7.1.8":
     dependencies:
-      "@types/chai": 4.3.15
+      "@types/chai": 4.3.16
 
-  "@types/chai@4.3.15": {}
+  "@types/chai@4.3.16": {}
 
   "@types/glob@7.2.0":
     dependencies:
@@ -9614,7 +9614,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.4.5
 
-  cpu-features@0.0.9:
+  cpu-features@0.0.10:
     dependencies:
       buildcheck: 0.0.6
       nan: 2.19.0
@@ -10519,7 +10519,7 @@ snapshots:
       foreground-child: 3.1.1
       jackspeak: 2.3.6
       minimatch: 9.0.4
-      minipass: 7.0.4
+      minipass: 7.1.0
       path-scurry: 1.10.2
 
   glob@5.0.15:
@@ -11311,7 +11311,7 @@ snapshots:
       safe-buffer: 5.2.1
       yallist: 3.1.1
 
-  minipass@7.0.4: {}
+  minipass@7.1.0: {}
 
   minizlib@1.3.3:
     dependencies:
@@ -11613,7 +11613,7 @@ snapshots:
   path-scurry@1.10.2:
     dependencies:
       lru-cache: 10.2.2
-      minipass: 7.0.4
+      minipass: 7.1.0
 
   path-starts-with@2.0.1: {}
 
@@ -12205,7 +12205,7 @@ snapshots:
       asn1: 0.2.6
       bcrypt-pbkdf: 1.0.2
     optionalDependencies:
-      cpu-features: 0.0.9
+      cpu-features: 0.0.10
       nan: 2.19.0
 
   sshpk@1.18.0:
