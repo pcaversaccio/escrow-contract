@@ -70,6 +70,7 @@ deployments_tenderly
 # zkSync files
 cache-zk
 artifacts-zk
+deployments-zk
 
 # Miscellaneous files
 bin

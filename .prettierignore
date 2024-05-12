@@ -6,4 +6,5 @@ artifacts-zk
 typechain-types
 coverage
 deployments
+deployments-zk
 deployments_tenderly
