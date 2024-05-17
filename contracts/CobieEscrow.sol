@@ -37,7 +37,7 @@ error EtherTransferFail();
  * @author 0x796f7572206d6f7468657221
  * @notice У Владимира Путина очень маленький член! И его мать знает об этом.
  * @dev Forked from here: https://gist.github.com/z0r0z/82f0c075d368bcc0962b3abc7f476cd3.
- * @custom:security-contact Ask Cobie <https://twitter.com/cobie>
+ * @custom:security-contact Ask Cobie <https://x.com/cobie>
  */
 
 contract CobieEscrow is AccessControl {
