@@ -116,7 +116,7 @@ const config: HardhatUserConfig = {
         enabled: false,
       },
       ledgerAccounts,
-      zksync: true, // Enable ZKsync in the Hardhat local network
+      // zksync: true, // Enable ZKsync in the Hardhat local network
     },
     localhost: {
       url: "http://127.0.0.1:8545",
