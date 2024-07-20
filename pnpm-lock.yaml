@@ -908,10 +908,10 @@ packages:
       "@nomicfoundation/hardhat-verify":
         optional: true
 
-  "@openzeppelin/upgrades-core@1.34.2":
+  "@openzeppelin/upgrades-core@1.34.3":
     resolution:
       {
-        integrity: sha512-UOsSStX812TIqHIa0+njmfZm4tpserxRuapjkGerOssMZkj7Ksje8ezLC/bETxmkougy0WoxEUjqzA1pY+RyNw==,
+        integrity: sha512-C84afQ0DOFBCAo/D9HRSD38hqBpmzCTcfLpZPzDbnpQt6/b3FkgNiGsxqD8DSE3mjnsMPtJdNnvP2Gq7hh0G5A==,
       }
     hasBin: true
 
@@ -8260,7 +8260,7 @@ snapshots:
       "@openzeppelin/defender-sdk-base-client": 1.14.1
       "@openzeppelin/defender-sdk-deploy-client": 1.14.1(debug@4.3.5)
       "@openzeppelin/defender-sdk-network-client": 1.14.1(debug@4.3.5)
-      "@openzeppelin/upgrades-core": 1.34.2
+      "@openzeppelin/upgrades-core": 1.34.3
       chalk: 4.1.2
       debug: 4.3.5(supports-color@8.1.1)
       ethereumjs-util: 7.1.5
@@ -8274,7 +8274,7 @@ snapshots:
       - encoding
       - supports-color
 
-  "@openzeppelin/upgrades-core@1.34.2":
+  "@openzeppelin/upgrades-core@1.34.3":
     dependencies:
       cbor: 9.0.2
       chalk: 4.1.2
@@ -8431,7 +8431,7 @@ snapshots:
       "@ethersproject/bignumber": 5.7.0
       "@nomicfoundation/hardhat-ethers": 3.0.6(ethers@6.13.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat@2.22.6(bufferutil@4.0.8)(ts-node@10.9.2(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(utf-8-validate@5.0.10))
       "@openzeppelin/hardhat-upgrades": 3.2.0(@nomicfoundation/hardhat-ethers@3.0.6(ethers@6.13.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat@2.22.6(bufferutil@4.0.8)(ts-node@10.9.2(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(utf-8-validate@5.0.10)))(@nomicfoundation/hardhat-verify@2.0.8(hardhat@2.22.6(bufferutil@4.0.8)(ts-node@10.9.2(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(utf-8-validate@5.0.10)))(ethers@6.13.1(bufferutil@4.0.8)(utf-8-validate@5.0.10))(hardhat@2.22.6(bufferutil@4.0.8)(ts-node@10.9.2(@types/node@20.14.11)(typescript@5.5.3))(typescript@5.5.3)(utf-8-validate@5.0.10))
-      "@openzeppelin/upgrades-core": 1.34.2
+      "@openzeppelin/upgrades-core": 1.34.3
       axios: 1.7.2(debug@4.3.5)
       ethers: 6.13.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       fs-extra: 10.1.0
