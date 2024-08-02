@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import hre from "hardhat";
 
 // Colour codes for terminal prints
