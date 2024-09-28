@@ -16,7 +16,9 @@ import "hardhat-gas-reporter";
 import "hardhat-abi-exporter";
 import "solidity-coverage";
 import "hardhat-contract-sizer";
-import "@tenderly/hardhat-tenderly";
+// Uncomment if you want to use the Hardhat Tenderly module
+// You must also uncomment the subsequent `tenderly` configuration in this file accordingly
+// import "@tenderly/hardhat-tenderly";
 
 const ethMainnetUrl = vars.get("ETH_MAINNET_URL", "https://rpc.ankr.com/eth");
 const accounts = [
@@ -1724,13 +1726,13 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-  tenderly: {
-    username: "pcaversaccio",
-    project: "project",
-    forkNetwork: "",
-    privateVerification: false,
-    deploymentsDir: "deployments_tenderly",
-  },
+  // tenderly: {
+  //   username: "pcaversaccio",
+  //   project: "project",
+  //   forkNetwork: "",
+  //   privateVerification: false,
+  //   deploymentsDir: "deployments_tenderly",
+  // },
 };
 
 export default config;
