@@ -942,6 +942,18 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    superseedMain: {
+      chainId: 5330,
+      url: vars.get("SUPERSEED_MAINNET_URL", "https://mainnet.superseed.xyz"),
+      accounts,
+      ledgerAccounts,
+    },
+    storyTestnet: {
+      chainId: 1516,
+      url: vars.get("STORY_TESTNET_URL", "https://odyssey.storyrpc.io"),
+      accounts,
+      ledgerAccounts,
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -1160,8 +1172,11 @@ const config: HardhatUserConfig = {
       // For Metal L2 testnet & mainnet
       metalL2: vars.get("METALL2_API_KEY", ""),
       metalL2Testnet: vars.get("METALL2_API_KEY", ""),
-      // For Superseed testnet
+      // For Superseed testnet & mainnet
+      superseed: vars.get("SUPERSEED_API_KEY", ""),
       superseedTestnet: vars.get("SUPERSEED_API_KEY", ""),
+      // For Story testnet
+      storyTestnet: vars.get("STORY_API_KEY", ""),
     },
     customChains: [
       {
@@ -1915,11 +1930,27 @@ const config: HardhatUserConfig = {
         },
       },
       {
+        network: "superseed",
+        chainId: 5330,
+        urls: {
+          apiURL: "https://explorer.superseed.xyz/api",
+          browserURL: "https://explorer.superseed.xyz",
+        },
+      },
+      {
         network: "superseedTestnet",
         chainId: 53302,
         urls: {
           apiURL: "https://sepolia-explorer.superseed.xyz/api",
           browserURL: "https://sepolia-explorer.superseed.xyz",
+        },
+      },
+      {
+        network: "storyTestnet",
+        chainId: 1516,
+        urls: {
+          apiURL: "https://odyssey.storyscan.xyz/api",
+          browserURL: "https://odyssey.storyscan.xyz",
         },
       },
     ],
