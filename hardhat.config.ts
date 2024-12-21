@@ -972,6 +972,18 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    flowTestnet: {
+      chainId: 545,
+      url: vars.get("FLOW_TESTNET_URL", "https://testnet.evm.nodes.onflow.org"),
+      accounts,
+      ledgerAccounts,
+    },
+    flowMain: {
+      chainId: 747,
+      url: vars.get("FLOW_MAINNET_URL", "https://mainnet.evm.nodes.onflow.org"),
+      accounts,
+      ledgerAccounts,
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -1199,6 +1211,9 @@ const config: HardhatUserConfig = {
       // For Sonic testnet & mainnet
       sonic: vars.get("SONIC_API_KEY", ""),
       sonicTestnet: vars.get("SONIC_API_KEY", ""),
+      // For EVM on Flow testnet & mainnet
+      flow: vars.get("FLOW_API_KEY", ""),
+      flowTestnet: vars.get("FLOW_API_KEY", ""),
     },
     customChains: [
       {
@@ -1997,6 +2012,22 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-testnet.sonicscan.org/api",
           browserURL: "https://testnet.sonicscan.org",
+        },
+      },
+      {
+        network: "flow",
+        chainId: 747,
+        urls: {
+          apiURL: "https://evm.flowscan.io/api",
+          browserURL: "https://evm.flowscan.io",
+        },
+      },
+      {
+        network: "flowTestnet",
+        chainId: 545,
+        urls: {
+          apiURL: "https://evm-testnet.flowscan.io/api",
+          browserURL: "https://evm-testnet.flowscan.io",
         },
       },
     ],
