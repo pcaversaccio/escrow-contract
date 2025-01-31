@@ -1074,6 +1074,18 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    hemiTestnet: {
+      chainId: 743111,
+      url: vars.get("HEMI_TESTNET_URL", "https://testnet.rpc.hemi.network/rpc"),
+      accounts,
+      ledgerAccounts,
+    },
+    hemiMain: {
+      chainId: 43111,
+      url: vars.get("HEMI_MAINNET_URL", "https://rpc.hemi.network/rpc"),
+      accounts,
+      ledgerAccounts,
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -1322,6 +1334,9 @@ const config: HardhatUserConfig = {
       // For Swellchain testnet & mainnet
       swell: vars.get("SWELL_API_KEY", ""),
       swellTestnet: vars.get("SWELL_API_KEY", ""),
+      // For Hemi testnet & mainnet
+      hemi: vars.get("HEMI_API_KEY", ""),
+      hemiTestnet: vars.get("HEMI_API_KEY", ""),
     },
     customChains: [
       {
@@ -2232,6 +2247,22 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://swell-testnet-explorer.alt.technology/api",
           browserURL: "https://swell-testnet-explorer.alt.technology",
+        },
+      },
+      {
+        network: "hemi",
+        chainId: 43111,
+        urls: {
+          apiURL: "https://explorer.hemi.xyz/api",
+          browserURL: "https://explorer.hemi.xyz",
+        },
+      },
+      {
+        network: "hemiTestnet",
+        chainId: 743111,
+        urls: {
+          apiURL: "https://testnet.explorer.hemi.xyz/api",
+          browserURL: "https://testnet.explorer.hemi.xyz",
         },
       },
     ],
