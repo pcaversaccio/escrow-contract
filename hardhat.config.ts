@@ -1086,6 +1086,18 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    berachainTestnet: {
+      chainId: 80084,
+      url: vars.get("BERACHAIN_TESTNET_URL", "https://bartio.drpc.org"),
+      accounts,
+      ledgerAccounts,
+    },
+    berachainMain: {
+      chainId: 80094,
+      url: vars.get("BERACHAIN_MAINNET_URL", "https://rpc.berachain.com"),
+      accounts,
+      ledgerAccounts,
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -1337,6 +1349,9 @@ const config: HardhatUserConfig = {
       // For Hemi testnet & mainnet
       hemi: vars.get("HEMI_API_KEY", ""),
       hemiTestnet: vars.get("HEMI_API_KEY", ""),
+      // For Berachain testnet & mainnet
+      berachain: vars.get("BERACHAIN_API_KEY", ""),
+      berachainTestnet: vars.get("BERACHAIN_API_KEY", ""),
     },
     customChains: [
       {
@@ -2263,6 +2278,23 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://testnet.explorer.hemi.xyz/api",
           browserURL: "https://testnet.explorer.hemi.xyz",
+        },
+      },
+      {
+        network: "berachain",
+        chainId: 80094,
+        urls: {
+          apiURL: "https://api.berascan.com/api",
+          browserURL: "https://berascan.com",
+        },
+      },
+      {
+        network: "berachainTestnet",
+        chainId: 80084,
+        urls: {
+          apiURL:
+            "https://api.routescan.io/v2/network/mainnet/evm/80084/etherscan",
+          browserURL: "https://bartio.beratrail.io",
         },
       },
     ],
