@@ -891,6 +891,12 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    unichainMain: {
+      chainId: 130,
+      url: vars.get("UNICHAIN_MAINNET_URL", "https://mainnet.unichain.org"),
+      accounts,
+      ledgerAccounts,
+    },
     xdcTestnet: {
       chainId: 51,
       url: vars.get("XDC_TESTNET_URL", "https://erpc.apothem.network"),
@@ -1098,6 +1104,24 @@ const config: HardhatUserConfig = {
       accounts,
       ledgerAccounts,
     },
+    monadTestnet: {
+      chainId: 10143,
+      url: vars.get("MONAD_TESTNET_URL", "https://testnet-rpc.monad.xyz"),
+      accounts,
+      ledgerAccounts,
+    },
+    cornTestnet: {
+      chainId: 21000001,
+      url: vars.get("CORN_TESTNET_URL", "https://testnet.corn-rpc.com"),
+      accounts,
+      ledgerAccounts,
+    },
+    cornMain: {
+      chainId: 21000000,
+      url: vars.get("CORN_MAINNET_URL", "https://mainnet.corn-rpc.com"),
+      accounts,
+      ledgerAccounts,
+    },
   },
   xdeploy: {
     contract: "CobieEscrow",
@@ -1300,7 +1324,8 @@ const config: HardhatUserConfig = {
       // For Plume testnet & mainnet
       plume: vars.get("PLUME_API_KEY", ""),
       plumeTestnet: vars.get("PLUME_API_KEY", ""),
-      // For Unichain testnet
+      // For Unichain testnet & mainnet
+      unichain: vars.get("UNICHAIN_API_KEY", ""),
       unichainTestnet: vars.get("UNICHAIN_API_KEY", ""),
       // For XDC testnet & mainnet
       xdc: vars.get("XDC_API_KEY", ""),
@@ -1352,6 +1377,9 @@ const config: HardhatUserConfig = {
       // For Berachain testnet & mainnet
       berachain: vars.get("BERACHAIN_API_KEY", ""),
       berachainTestnet: vars.get("BERACHAIN_API_KEY", ""),
+      // For Corn testnet & mainnet
+      corn: vars.get("CORN_API_KEY", ""),
+      cornTestnet: vars.get("CORN_API_KEY", ""),
     },
     customChains: [
       {
@@ -2025,6 +2053,14 @@ const config: HardhatUserConfig = {
         },
       },
       {
+        network: "unichain",
+        chainId: 130,
+        urls: {
+          apiURL: "https://api.uniscan.xyz/api",
+          browserURL: "https://uniscan.xyz",
+        },
+      },
+      {
         network: "unichainTestnet",
         chainId: 1301,
         urls: {
@@ -2293,8 +2329,26 @@ const config: HardhatUserConfig = {
         chainId: 80084,
         urls: {
           apiURL:
-            "https://api.routescan.io/v2/network/mainnet/evm/80084/etherscan",
+            "https://api.routescan.io/v2/network/testnet/evm/80084/etherscan",
           browserURL: "https://bartio.beratrail.io",
+        },
+      },
+      {
+        network: "corn",
+        chainId: 21000000,
+        urls: {
+          apiURL:
+            "https://api.routescan.io/v2/network/mainnet/evm/21000000/etherscan",
+          browserURL: "https://cornscan.io",
+        },
+      },
+      {
+        network: "cornTestnet",
+        chainId: 21000001,
+        urls: {
+          apiURL:
+            "https://api.routescan.io/v2/network/testnet/evm/21000001/etherscan",
+          browserURL: "https://testnet.cornscan.io",
         },
       },
     ],
