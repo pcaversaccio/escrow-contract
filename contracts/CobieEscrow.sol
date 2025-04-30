@@ -2,9 +2,7 @@
 pragma solidity 0.8.29;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {
-    SafeERC20
-} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 
 /////////////////////////////////////////////////////////////////
@@ -137,12 +135,7 @@ contract CobieEscrow is AccessControl {
             escrowCount++;
         }
         uint256 registration = escrowCount;
-        escrows[registration] = Escrow(
-            payable(msg.sender),
-            payable(receiver),
-            token,
-            value
-        );
+        escrows[registration] = Escrow(payable(msg.sender), payable(receiver), token, value);
 
         emit Deposit(msg.sender, receiver, token, value, registration, details);
     }
@@ -178,9 +171,7 @@ contract CobieEscrow is AccessControl {
             if (address(escrow.token) == address(0)) {
                 /// @dev Distributes the ether value to the winner address.
                 // solhint-disable-next-line avoid-low-level-calls
-                (bool success, ) = escrow.receiver.call{value: escrow.value}(
-                    ""
-                );
+                (bool success, ) = escrow.receiver.call{value: escrow.value}("");
                 if (!success) revert EtherTransferFail();
             } else {
                 /// @dev Safely distributes the ERC-20 token to the winner address.
@@ -194,16 +185,11 @@ contract CobieEscrow is AccessControl {
         if (address(escrowRevert.token) == address(0)) {
             /// @dev Refunds the ether value to the winner address.
             // solhint-disable-next-line avoid-low-level-calls
-            (bool success, ) = escrowRevert.depositor.call{
-                value: escrowRevert.value
-            }("");
+            (bool success, ) = escrowRevert.depositor.call{value: escrowRevert.value}("");
             if (!success) revert EtherTransferFail();
         } else {
             /// @dev Safely refunds the ERC-20 token to the winner address.
-            escrowRevert.token.safeTransfer(
-                escrowRevert.depositor,
-                escrowRevert.value
-            );
+            escrowRevert.token.safeTransfer(escrowRevert.depositor, escrowRevert.value);
         }
 
         emit WinnerRefund(winnerRefundRegistration);
