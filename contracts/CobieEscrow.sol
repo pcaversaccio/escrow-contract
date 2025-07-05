@@ -132,7 +132,7 @@ contract CobieEscrow is AccessControl {
          * @dev Cannot realistically overflow.
          */
         unchecked {
-            escrowCount++;
+            ++escrowCount;
         }
         uint256 registration = escrowCount;
         escrows[registration] = Escrow(payable(msg.sender), payable(receiver), token, value);
