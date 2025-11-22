@@ -8,7 +8,7 @@
 > Cobie's address: [`0x4Cbe68d825d21cB4978F56815613eeD06Cf30152`](https://etherscan.io/address/0x4Cbe68d825d21cB4978F56815613eeD06Cf30152)
 
 - **Sepolia:** [`0x081A62EcFf5F3B1705E495b396B607305E619605`](https://sepolia.etherscan.io/address/0x081A62EcFf5F3B1705E495b396B607305E619605)
-- **Holešky (Holešovice):** [`0x081A62EcFf5F3B1705E495b396B607305E619605`](https://holesky.etherscan.io/address/0x081A62EcFf5F3B1705E495b396B607305E619605)
+- **Hoodi:** [`0x081A62EcFf5F3B1705E495b396B607305E619605`](https://hoodi.etherscan.io/address/0x081A62EcFf5F3B1705E495b396B607305E619605)
 
 ## Disclaimer
 
