@@ -19,7 +19,7 @@
   },
   "author": "Мать Путина",
   "license": "WTFPL",
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.1",
   "scripts": {
     "help": "hardhat help",
     "accounts": "hardhat accounts",
