@@ -9,4 +9,3 @@ allowBuilds:
   secp256k1: true
   ssh2: true
   usb: true
-
